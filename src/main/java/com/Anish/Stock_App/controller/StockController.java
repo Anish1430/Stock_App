@@ -28,4 +28,10 @@ public class StockController {
            return stockService.getDeleteById(id);
         }
 
+        //UpdateById
+
+     @PutMapping("stock/price/id")
+     public String updateStockById(@RequestParam Long id, @RequestParam double price) {
+            return stockService.updateStockById(id,price);
+     }
 }

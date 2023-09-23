@@ -29,4 +29,14 @@ public class StockService {
     }
 
 
+    public String updateStockById(Long id, double price) {
+        Stock presentStock=iStockRepo.findById(id).orElse(null);
+        if(presentStock != null){
+            presentStock.setStockPrice(price);
+            iStockRepo.save(presentStock);
+            return "Stock is Updated";
+        }else {
+            return "Stock is not updated";
+        }
+    }
 }
