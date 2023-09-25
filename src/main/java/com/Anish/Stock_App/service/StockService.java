@@ -1,10 +1,12 @@
 package com.Anish.Stock_App.service;
 
 import com.Anish.Stock_App.model.Stock;
+import com.Anish.Stock_App.model.Type;
 import com.Anish.Stock_App.repo.IStockRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -38,5 +40,13 @@ public class StockService {
         }else {
             return "Stock is not updated";
         }
+    }
+
+    public List<Stock> getStocksByTypeLessEqualPrice(Type type, double price) {
+        return iStockRepo.findByStockTypeAndStockPriceLessThanEqual(type,price);
+    }
+
+    public List<Stock> getAllStocksLessPriceLessTime(double price, LocalDateTime year) {
+       return iStockRepo.findByStockPriceLessThanAndStockCreationTimeStamp(price,year);
     }
 }
