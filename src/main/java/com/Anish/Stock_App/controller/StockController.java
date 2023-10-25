@@ -45,4 +45,8 @@ public class StockController {
             return stockService.getAllStocksLessPriceLessTime(price,year);
 
     }
+    @PutMapping("stock/price/type")
+    public String updateStockByType(@RequestParam float hike, @RequestParam Type stockType) {
+        return stockService.updateStockByType(hike,stockType);
+    }
 }
